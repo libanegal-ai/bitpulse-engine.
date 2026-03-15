@@ -1,0 +1,10 @@
+Clarinet Setup
+[project]
+name = "bitpulse-engine"
+authors = []
+description = ""
+telemetry = true
+requirements = []
+[contracts.bitpulse-vault]
+path = "contracts/bitpulse-vault.clar"
+clarity_version = 2
