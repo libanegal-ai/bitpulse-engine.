@@ -1,38 +1,40 @@
-BitPulse Engine: High-Performance Bitcoin Liquidity Vault
-🚀 Executive Summary
-BitPulse Engine is a high-performance, non-custodial liquidity layer engineered for the Stacks ecosystem. By leveraging the Nakamoto Release, BitPulse transforms Bitcoin from a passive asset into a dynamic, programmable financial engine. Our infrastructure enables institutional-grade vaults with sub-5 second finality, backed by the unparalleled security of the Bitcoin base layer.
-🎯 The Mission
-To unlock Bitcoin’s $1T+ market capitalisation by providing a secure, high-velocity bridge to the DeFi ecosystem. We aim to eliminate the latency barriers of traditional Bitcoin layers, offering users a seamless experience for deploying assets into yield-generating strategies.
-🏗 System Architecture & Pillars
-•	Security-First Engineering: Built using Clarity 2.0, our smart contracts are interpreted and decidable, effectively eliminating re-entrancy attacks and ensuring 100% predictable execution.
-•	Hyper-Scalability: Optimised for Nakamoto Fast Blocks, allowing for near-instant transaction confirmations and high-throughput capital movement.
-•	Institutional Integrity: A zero-loop, non-custodial architecture designed for maximum capital efficiency and minimal gas consumption.
-🛠 Technical Stack
-•	Smart Contracts: Clarity 2.0
-•	Consensus: Stacks Nakamoto (Fast Block integration)
-•	Frontend: Next.js 14 (App Router), TailwindCSS
-•	Library: @stacks/connect, @stacks/transactions
-•	Development Environment: Clarinet
-🗺 Strategic Roadmap
-Phase 1: Genesis (Q1 2026)
-•	Deployment of the BitPulse Core Vault on Main-net.
-•	Integration of Fast Block settlement (sub-10 second finality).
-•	Open-sourcing the full contract suite with 100% unit test coverage.
-Phase 2: Expansion (Q2 - Q3 2026)
-•	sBTC Native Integration: Direct Bitcoin-to-Vault deposits without intermediaries.
-•	DAO Governance: Transitioning protocol upgrades to a community-led multi-sig structure.
-Phase 3: The Ecosystem (Q4 2026+)
-•	BitPulse SDK: A developer toolkit for 3rd-party dApp integration.
-•	Cross-Chain Synchronisation: Exploring trust-less Bitcoin bridges to alternative L2 environments.
+Smart Contract
+;; ---------------------------------------------------------
+;; BitPulse Core Vault - Clarity 2.0
+;; Optimized for Nakamoto Fast Blocks
+;; ---------------------------------------------------------
 
-# Clone the repository
-git clone https://github.com/YOUR_USERNAME/bitpulse-engine.git
+(define-constant CONTRACT-OWNER tx-sender)
+(define-constant ERR-UNAUTHORIZED (err u 401))
+(define-constant ERR-INSUFFICIENT-FUNDS (err u 403))
 
-# Navigate to the project directory
-cd bitpulse-engine
+(define-map UserVaults principal uint)
+(define-data-var TotalTVL uint u0)
 
-# Run the test suite
-clarinet test
+;; @desc Deposit STX/sBTC into the high-speed vault
+(define-public (deposit (amount uint))
+    (begin
+        (asserts! (> amount u0) ERR-INSUFFICIENT-FUNDS)
+        (try! (stx-transfer? amount tx-sender (as-contract tx-sender)))
+        (let ((current-balance (get-balance tx-sender)))
+            (map-set UserVaults tx-sender (+ current-balance amount))
+            (var-set TotalTVL (+ (var-get TotalTVL) amount))
+            (ok true)
+        )
+    )
+)
 
-# Integrate with local Devnet
-clarinet integrate
+;; @desc Withdraw assets with instant finality
+(define-public (withdraw (amount uint))
+    (let ((current-balance (get-balance tx-sender)))
+        (asserts! (>= current-balance amount) ERR-INSUFFICIENT-FUNDS)
+        (try! (as-contract (stx-transfer? amount (as-contract tx-sender) tx-sender)))
+        (map-set UserVaults tx-sender (- current-balance amount))
+        (var-set TotalTVL (- (var-get TotalTVL) amount))
+        (ok true)
+    )
+)
+
+(define-read-only (get-balance (user principal))
+    (default-to u0 (map-get? UserVaults user))
+)
