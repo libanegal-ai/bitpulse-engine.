@@ -69,17 +69,9 @@ To unlock Bitcoin’s **$1T+ market capitalization** by providing a secure, high
 * **BitPulse SDK:** A developer toolkit for 3rd-party dApp integration.
 * **Cross-Chain Sync:** Exploring trust-less Bitcoin bridges to alternative L2 environments.
 
----
-
-## 💻 Installation & Testing
-
-To interact with the smart contracts locally, ensure you have **Clarinet** installed.
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/libanegal-ai/bitpulse-engine.git](https://github.com/libanegal-ai/bitpulse-engine.git)
+git clone https://github.com/libanegal-ai/bitpulse-engine.git
 cd bitpulse-engine
 clarinet test
 clarinet integrate
----
+
 
