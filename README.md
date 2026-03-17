@@ -83,16 +83,3 @@ clarinet test
 clarinet integrate
 ---
 
-## 📩 Get In Touch
-If you're interested in institutional-grade Bitcoin DeFi or want to contribute to **BitPulse Engine**, let's connect:
-
-* **Twitter (X):** [Follow on X](https://x.com/liban_egal)
-* **LinkedIn:** [Connect on LinkedIn](https://linkedin.com/in/libanegal)
-* **Portfolio:** [libanegal.ai](https://libanegal.ai)
-
----
-<p align="center">
-  <i>© 2026 BitPulse Engine | Built by Liban Ahmed Egal</i>
-</p>
-
-   
