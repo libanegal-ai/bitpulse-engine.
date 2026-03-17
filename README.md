@@ -1,5 +1,5 @@
 ![BitPulse Dashboard](IMG_6357.jpg)
-BitPulse Engine: High-Performance Bitcoin Liquidity Vault
+oBitPulse Engine: High-Performance Bitcoin Liquidity Vault
 🚀 Executive Summary
 BitPulse Engine is a high-performance, non-custodial liquidity layer engineered for the Stacks ecosystem. By leveraging the Nakamoto Release, BitPulse transforms Bitcoin from a passive asset into a dynamic, programmable financial engine. Our infrastructure enables institutional-grade vaults with sub-5 second finality, backed by the unparalleled security of the Bitcoin base layer.
 🎯 The Mission
