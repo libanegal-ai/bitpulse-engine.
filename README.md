@@ -1,33 +1,65 @@
-# BitPulse Engine (Sui)
+# 🚀 BitPulse Engine (Sui)
 
-BitPulse Engine is a high-performance, non-custodial liquidity vault built on Sui.
+**BitPulse Engine** is a high-performance, non-custodial liquidity vault protocol designed to unlock efficient capital deployment on Sui.
 
-## 🚀 Overview
-BitPulse enables users to create vaults, deposit assets, and generate yield in a secure and decentralized way.
+---
 
-## ⚙️ Features
-- Multi-vault system
-- Deposit & Withdraw functions
-- Yield calculation (v1)
-- Built with Move (Sui smart contracts)
+## 🌍 Overview
+
+BitPulse transforms digital assets into productive capital through a secure, scalable, and decentralized vault infrastructure.
+
+Built on Sui, BitPulse leverages:
+- ⚡ Sub-second finality
+- 💸 Ultra-low transaction costs
+- 🔒 Strong object-based security (Move)
+
+---
+
+## 🎯 Mission
+
+To build the next-generation liquidity layer enabling:
+- Seamless capital allocation
+- Passive yield generation
+- Cross-chain liquidity expansion (BTC ↔ SUI)
+
+---
+
+## ⚙️ Core Features
+
+- 🏦 **Vault Infrastructure**
+  - Multi-vault architecture
+  - Permissionless vault creation
+
+- 💰 **Capital Management**
+  - Deposit & Withdraw functionality
+  - Non-custodial asset control
+
+- 📈 **Yield Engine (v1)**
+  - Basic yield calculation (upgradeable)
+
+- 🔐 **Security First**
+  - Built with Move (safe resource model)
+  - No re-entrancy risks
+
+---
+
+## 🧱 Architecture
+
+- **Smart Contracts:** Move (Sui)
+- **Execution Model:** Object-centric parallel execution
+- **Design:** Non-custodial vault registry system
+
+---
 
 ## 🧪 Testing
-- Unit tests implemented
-- Core functions tested (create, deposit, withdraw)
 
-## 📊 Current Status
-Phase 1 Complete:
-- Smart contract deployed (local/dev)
-- Vault logic implemented
-- Tests passing
+- ✅ Unit tests implemented
+- ✅ Core logic verified:
+  - Vault creation
+  - Deposits
+  - Withdrawals
+  - Yield calculation
 
-## 🔜 Next Steps
-- Real SUI coin integration
-- Access control (owner permissions)
-- Cross-chain BTC ↔ SUI integration
-
-## 🤝 Contributing
-Open to feedback and collaboration.
-
-
-
+Run locally:
+```bash
+sui move test
