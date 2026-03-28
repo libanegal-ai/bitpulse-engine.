@@ -1,77 +1,33 @@
-![BitPulse Engine](IMG_6357.jpeg)
-# 🚀 BitPulse Engine: High-Performance Bitcoin Liquidity Vault
+# BitPulse Engine (Sui)
 
-BitPulse Engine is a next-generation, non-custodial liquidity layer specifically engineered for the **Stacks ecosystem**. By leveraging the **Nakamoto Release**, BitPulse transforms Bitcoin from a passive asset into a dynamic, programmable financial powerhouse.
+BitPulse Engine is a high-performance, non-custodial liquidity vault built on Sui.
 
-## 📊 Real-Time Network Insights
-As shown in our live dashboard:
-* **BTC Price:** Monitoring real-time market fluctuations (currently at ~$74k).
-* **Total Value Locked (TVL):** Scaling towards $1B in decentralized liquidity.
-* **High Velocity:** Operating at **567 TPS** with sub-5 second finality.
-* **Network Health:** Maintaining "Excellent" status via automated security protocols.
+## 🚀 Overview
+BitPulse enables users to create vaults, deposit assets, and generate yield in a secure and decentralized way.
 
-## 🛡️ Core Pillars
-1. **Security-First:** Backed by the unparalleled security of the Bitcoin base layer.
-2. **Ultra-Fast Finality:** Integrated with the Nakamoto release for seamless DeFi transactions.
-3. **Liquidity Efficiency:** Optimized vaults for institutional-grade asset deployment.
+## ⚙️ Features
+- Multi-vault system
+- Deposit & Withdraw functions
+- Yield calculation (v1)
+- Built with Move (Sui smart contracts)
 
-# 🚀 BitPulse Engine
-### High-Performance Bitcoin Liquidity Vault
+## 🧪 Testing
+- Unit tests implemented
+- Core functions tested (create, deposit, withdraw)
 
-![BitPulse Engine Dashboard](IMG_6357.jpeg)
+## 📊 Current Status
+Phase 1 Complete:
+- Smart contract deployed (local/dev)
+- Vault logic implemented
+- Tests passing
 
----
+## 🔜 Next Steps
+- Real SUI coin integration
+- Access control (owner permissions)
+- Cross-chain BTC ↔ SUI integration
 
-## 📋 Executive Summary
-**BitPulse Engine** is a high-performance, non-custodial liquidity layer engineered for the **Stacks ecosystem**. By leveraging the **Nakamoto Release**, BitPulse transforms Bitcoin from a passive asset into a dynamic, programmable financial engine. 
+## 🤝 Contributing
+Open to feedback and collaboration.
 
-Our infrastructure enables institutional-grade vaults with **sub-5 second finality**, backed by the unparalleled security of the Bitcoin base layer.
-
----
-
-## 🎯 The Mission
-To unlock Bitcoin’s **$1T+ market capitalization** by providing a secure, high-velocity bridge to the DeFi ecosystem. We aim to eliminate the latency barriers of traditional Bitcoin layers, offering users a seamless experience for deploying assets into yield-generating strategies.
-
----
-
-## 🏗 System Architecture & Pillars
-
-* **🛡️ Security-First Engineering:** Built using **Clarity 2.0**, our smart contracts are interpreted and decidable, effectively eliminating re-entrancy attacks and ensuring 100% predictable execution.
-* **⚡ Hyper-Scalability:** Optimized for **Nakamoto Fast Blocks**, allowing for near-instant transaction confirmations and high-throughput capital movement.
-* **🏦 Institutional Integrity:** A zero-loop, non-custodial architecture designed for maximum capital efficiency and minimal gas consumption.
-
----
-
-## 🛠 Technical Stack
-
-| Category | Technology |
-| :--- | :--- |
-| **Smart Contracts** | Clarity 2.0 |
-| **Consensus** | Stacks Nakamoto (Fast Block integration) |
-| **Frontend** | Next.js 14 (App Router), TailwindCSS |
-| **Libraries** | @stacks/connect, @stacks/transactions |
-| **Dev Environment** | Clarinet |
-
----
-
-## 🗺 Strategic Roadmap
-
-### **Phase 1: Genesis (Q1 2026)** 🟢
-* Deployment of the BitPulse Core Vault on Main-net.
-* Integration of Fast Block settlement (sub-10 second finality).
-* Open-sourcing the full contract suite with 100% unit test coverage.
-
-### **Phase 2: Expansion (Q2 - Q3 2026)** 🟡
-* **sBTC Native Integration:** Direct Bitcoin-to-Vault deposits without intermediaries.
-* **DAO Governance:** Transitioning protocol upgrades to a community-led multi-sig structure.
-
-### **Phase 3: The Ecosystem (Q4 2026+)** 🔵
-* **BitPulse SDK:** A developer toolkit for 3rd-party dApp integration.
-* **Cross-Chain Sync:** Exploring trust-less Bitcoin bridges to alternative L2 environments.
-
-git clone https://github.com/libanegal-ai/bitpulse-engine.git
-cd bitpulse-engine
-clarinet test
-clarinet integrate
 
 
