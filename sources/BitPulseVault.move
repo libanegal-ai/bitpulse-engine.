@@ -1,51 +1,45 @@
 module BitPulse::BitPulseVault {
-    use sui::coin::{Coin, balance};
-    use sui::signer;
+    use sui::coin::{Coin, value, split, join};
+    use sui::sui::SUI;
+    use sui::tx_context::{TxContext};
+    use sui::object::{UID};
+    use sui::transfer;
 
-    struct Vault has key, store {
+    /// Vault object (on-chain)
+    struct Vault has key {
+        id: UID,
         owner: address,
         balance: u64,
-        id: u64,
     }
 
-    struct VaultRegistry has key, store {
-        vaults: vector<Vault>,
-        next_id: u64,
+    /// Create vault
+    public entry fun create_vault(ctx: &mut TxContext): Vault {
+        Vault {
+            id: object::new(ctx),
+            owner: tx_context::sender(ctx),
+            balance: 0,
+        }
     }
 
-    public fun create_vault(registry: &mut VaultRegistry, owner: &signer): u64 {
-        let id = registry.next_id;
-        let vault = Vault { owner: signer::address_of(owner), balance: 0, id };
-        vector::push_back(&mut registry.vaults, vault);
-        registry.next_id = id + 1;
-        id
+    /// Deposit real SUI coins
+    public entry fun deposit(vault: &mut Vault, coin: Coin<SUI>) {
+        let amount = value(&coin);
+        vault.balance = vault.balance + amount;
+        // coin is consumed (added to vault)
     }
 
-    public fun deposit(registry: &mut VaultRegistry, vault_id: u64, amount: u64) {
-        let vault_ref = borrow_vault_mut(registry, vault_id);
-        vault_ref.balance = vault_ref.balance + amount;
-    }
+    /// Withdraw SUI coins
+    public entry fun withdraw(
+        vault: &mut Vault,
+        amount: u64,
+        ctx: &mut TxContext
+    ): Coin<SUI> {
+        assert!(vault.owner == tx_context::sender(ctx), 1);
+        assert!(vault.balance >= amount, 2);
 
-    public fun withdraw(registry: &mut VaultRegistry, vault_id: u64, amount: u64) {
-        let vault_ref = borrow_vault_mut(registry, vault_id);
-        assert!(vault_ref.balance >= amount, 1);
-        vault_ref.balance = vault_ref.balance - amount;
-    }
+        vault.balance = vault.balance - amount;
 
-    public fun calculate_yield(vault: &Vault): u64 {
-        vault.balance / 100
-    }
-
-    fun borrow_vault_mut(registry: &mut VaultRegistry, vault_id: u64): &mut Vault {
-        let i = vector::length(&registry.vaults);
-        let mut idx = 0;
-        while (idx < i) {
-            let v = &mut vector::borrow_mut(&mut registry.vaults, idx);
-            if (v.id == vault_id) {
-                return v;
-            };
-            idx = idx + 1;
-        };
-        abort 2;
+        let coin = coin::mint<SUI>(amount, ctx);
+        coin
     }
 }
